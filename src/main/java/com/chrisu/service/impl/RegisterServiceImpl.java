@@ -24,7 +24,6 @@ public class RegisterServiceImpl implements RegisterService {
     if (registerUser != null) {
       return Result.error("该用户已存在!");
     }
-    user.setRolePowerId(4);
     user.setRolePowerId(RolePower.USER);
     String registerTime = TimeStampUtil.getTimeStamp();
     user.setUserRegisterTime(registerTime);

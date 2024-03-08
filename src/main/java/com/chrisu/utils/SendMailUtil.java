@@ -59,11 +59,11 @@ public class SendMailUtil {
           + name
           + "，您好！</p>"
           + "<p style='text-indent:2em; font-size: 20px;'>" +
-          "欢迎使用OCR票证识别平台，您本次的验证码是 "
+          "欢迎注册智慧政务交互平台，您本次的验证码是 "
           + "<span style='font-size:30px;font-weight:bold;color:red'>" + code
           + "</span>，请尽快使用！</p>"
           + "<p style='text-align:right; padding-right: 20px;'"
-          + "<a href='http://www.hyycinfo.com' style='font-size: 18px'>潇洒不是摆烂</a></p>"
+          + "<a href='http://www.hyycinfo.com' style='font-size: 18px'>chrisu</a></p>"
           + "<span style='font-size: 18px; float:right; margin-right: 60px;'>"
           + sdf.format(new Date())
           + "</span></body></html>";

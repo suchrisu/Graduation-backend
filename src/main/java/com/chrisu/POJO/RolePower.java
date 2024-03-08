@@ -13,9 +13,7 @@ public class RolePower implements Serializable {
   private String rolePowerName; // 用户权限（用户类型）
 
   public static final int MANAGER = 1; // 系统管理员权限id
-  public static final int CREATOR = 2; // 模板创建者权限id
-  public static final int CHECKER = 3; // 模板审核员权限id
-  public static final int USER = 4; // 普通用户权限id
+  public static final int USER = 2; // 普通用户权限id
 
   public RolePower() {
   }

@@ -54,6 +54,7 @@ public class RegisterController {
    */
   @GetMapping("/sendRegisterCode")
   public Result sendRegisterCode(HttpServletRequest request, @RequestParam("mail") String mail) {
+    System.out.println(mail);
     Result result = registerService.sendRegisterCode(mail);
     if (result.getCode() == 1) {
       HttpSession session = request.getSession();
