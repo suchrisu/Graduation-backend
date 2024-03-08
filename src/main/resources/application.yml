@@ -1,1 +1,19 @@
+server:
+  port: 80
 
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    url: jdbc:mysql://39.106.60.122:3306/myticket?useSSL=false&useServerPrepStmt=true
+    url: jdbc:mysql://localhost:3306/policy_llm?useSSL=false&useServerPrepStmt=true
+    username: root
+    password: 240803
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

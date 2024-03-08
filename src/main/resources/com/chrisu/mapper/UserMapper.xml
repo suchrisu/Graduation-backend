@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xsbsbl.mapper.UserMapper">
+
+  <resultMap id="userResultMap" type="com.xsbsbl.POJO.User">
+    <result column="user_id" property="userId"/>
+    <result column="role_power_id" property="rolePowerId"/>
+    <result column="user_name" property="userName"/>
+    <result column="user_password" property="userPassword"/>
+    <result column="user_register_time" property="userRegisterTime"/>
+    <result column="user_head_picture_address" property="userHeadPictureAddress"/>
+  </resultMap>
+  <update id="update">
+    update user
+    <set>
+      <if test="rolePowerId != null and rolePowerId != ''">
+        role_power_id =
+        #{rolePowerId},
+      </if>
+      <if test="userName != null and userName != ''">
+        user_name =
+        #{userName},
+      </if>
+      <if test="userPassword != null and userPassword != ''">
+        user_password =
+        #{userPassword},
+      </if>
+      <if test="userHeadPictureAddress != null and userHeadPictureAddress != ''">
+        user_head_picture_address =
+        #{userHeadPictureAddress},
+      </if>
+    </set>
+    where user_id = #{userId}
+  </update>
+  <delete id="deleteByIds">
+    delete from user where user_id in
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
+
+
+</mapper>
