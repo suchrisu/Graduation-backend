@@ -6,6 +6,7 @@ import com.chrisu.POJO.User;
 import com.chrisu.service.LoginService;
 import com.chrisu.utils.TimeStampUtil;
 import com.chrisu.utils.VerifyCode;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,7 @@ import java.io.IOException;
 /**
  * 处理登录相关请求的controller
  */
+@Slf4j
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(originPatterns = "*", allowCredentials = "true", allowedHeaders = "*")
@@ -37,6 +39,8 @@ public class LoginController {
   public Result login(HttpServletRequest request, HttpServletResponse response,
       @RequestBody User user, @RequestParam String code) {
     HttpSession session = request.getSession();
+
+    log.info((String) session.getAttribute("loginCode"));
     if (!code.equalsIgnoreCase((String) session.getAttribute("loginCode"))) {
       return Result.error("验证码错误!");
     }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chrisu.mapper.SessionMapper">
+
+  <resultMap id="sessionResultMap" type="com.chrisu.POJO.Session">
+    <result column="session_id" property="sessionId"/>
+    <result column="session_owner" property="sessionOwner"/>
+    <result column="session_name" property="sessionName"/>
+    <result column="session_file" property="sessionFile"/>
+    <result column="session_last_time" property="sessionLastTime"/>
+  </resultMap>
+
+
+
+</mapper>

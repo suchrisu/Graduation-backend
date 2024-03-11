@@ -35,6 +35,11 @@ public class RegisterServiceImpl implements RegisterService {
 
   @Override
   public Result sendRegisterCode(String mail) {
+
+    User user = userMapper.findById(mail);
+    if(user != null){
+      return Result.error("用户已存在!");
+    }
     String registerCode = RandomCode.getRandomCode();
     boolean isSendSuccess = SendMailUtil.sendEmail(SendMailUtil.FROM_MAIL,
         SendMailUtil.FROM_MAIL_PASSWORD, mail, registerCode, mail);

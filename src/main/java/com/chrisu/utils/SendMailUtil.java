@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 public class SendMailUtil {
 
   public static final String FROM_MAIL = "1374033672@qq.com";
-  public static final String FROM_MAIL_PASSWORD = "oncwgllcebouibeb";
+  public static final String FROM_MAIL_PASSWORD = "rdtxktunacotigef";
 
   /**
    * 发送邮件(参数自己根据自己的需求来修改，发送短信验证码可以直接套用这个模板)
