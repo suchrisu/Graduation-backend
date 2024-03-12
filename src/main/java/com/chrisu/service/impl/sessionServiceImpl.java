@@ -5,7 +5,9 @@ import com.chrisu.controller.Result;
 import com.chrisu.mapper.SessionMapper;
 import com.chrisu.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class sessionServiceImpl implements SessionService {
 
   @Autowired private SessionMapper sessionMapper;
