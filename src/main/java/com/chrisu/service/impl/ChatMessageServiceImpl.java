@@ -26,10 +26,10 @@ public class ChatMessageServiceImpl implements ChatMessageService {
         return new ArrayList<ChatMessage>();
       }
       File fileTemp = new File(context+"/"+file);
-      if(!fileTemp.exists()){
+      if(!fileTemp.exists() || fileTemp.length()==0){
         return new ArrayList<ChatMessage>();
       }
-      JSONReader jsonReader = new JSONReader(new FileReader(file));
+      JSONReader jsonReader = new JSONReader(new FileReader(fileTemp));
       jsonReader.startArray();
       while(jsonReader.hasNext()){
         chatMessageList.add(jsonReader.readObject(ChatMessage.class));
@@ -53,7 +53,7 @@ public class ChatMessageServiceImpl implements ChatMessageService {
       if(!fileTemp.exists()){
         fileTemp.createNewFile();
       }
-      JSONWriter jsonWriter = new JSONWriter(new FileWriter(file));
+      JSONWriter jsonWriter = new JSONWriter(new FileWriter(fileTemp));
       jsonWriter.startArray();
       for(ChatMessage chatMessage:chatMessageList){
         jsonWriter.writeObject(chatMessage);
