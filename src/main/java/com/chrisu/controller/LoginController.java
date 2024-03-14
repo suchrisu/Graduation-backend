@@ -78,8 +78,9 @@ public class LoginController {
   }
 
   @GetMapping("/logOut")
-  public void logOut(HttpServletRequest request){
+  public Result logOut(HttpServletRequest request){
     HttpSession session = request.getSession();
     session.removeAttribute("user");
+    return Result.success(true);
   }
 }
