@@ -66,4 +66,12 @@ public interface UserService {
    */
   Result getUserById(String userId);
 
+
+  /**
+   * 发送验证码
+   * @param mail 发送的用户邮箱
+   * @return
+   */
+  Result sendValidCode(String mail);
+
 }

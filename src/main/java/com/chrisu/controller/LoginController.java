@@ -1,6 +1,7 @@
 package com.chrisu.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.chrisu.POJO.Login;
 import com.chrisu.POJO.User;
 import com.chrisu.service.LoginService;
@@ -21,7 +22,7 @@ import java.io.IOException;
  */
 @Slf4j
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/login")
 @CrossOrigin(originPatterns = "*", allowCredentials = "true", allowedHeaders = "*")
 public class LoginController {
 
@@ -36,25 +37,13 @@ public class LoginController {
    * @return
    */
   @PostMapping("/login")
-  public Result login(HttpServletRequest request, HttpServletResponse response,
-      @RequestBody User user, @RequestParam String code) {
+  public Result login(HttpServletRequest request, HttpServletResponse response, @RequestBody User user, @RequestParam String code) {
     HttpSession session = request.getSession();
-
     log.info((String) session.getAttribute("loginCode"));
     if (!code.equalsIgnoreCase((String) session.getAttribute("loginCode"))) {
       return Result.error("验证码错误!");
     }
-    User loginUser = loginService.findById(user);
-    if (loginUser == null) {
-      return Result.error("此用户不存在!");
-    }
-    if (!user.getUserPassword().equals(loginUser.getUserPassword())) {
-      return Result.error("密码错误!");
-    }
-    session.setAttribute("user", loginUser);
-    Login login = new Login(TimeStampUtil.getTimeStamp(), user.getUserId());
-    loginService.insertLogin(login);
-    return Result.success(loginUser);
+    return loginService.login(session,user);
   }
 
 

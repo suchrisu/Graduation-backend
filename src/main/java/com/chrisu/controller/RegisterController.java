@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 处理注册相关请求的controller
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/register")
 @CrossOrigin(originPatterns = "*", allowCredentials = "true", allowedHeaders = "*")
 public class RegisterController {
 

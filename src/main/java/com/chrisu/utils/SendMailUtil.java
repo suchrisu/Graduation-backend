@@ -31,12 +31,9 @@ public class SendMailUtil {
    * @param from_email 发送人的邮箱
    * @param pwd        发送人的授权码
    * @param recevices  接收人的邮箱
-   * @param code       注册码
-   * @param name       收件人的姓名
    * @return 发送成功返回true, 发送失败返回false
    */
-  public static boolean sendEmail(String from_email, String pwd, String recevices, String code,
-      String name) {
+  public static boolean sendEmail(String from_email, String pwd, String recevices, String content) {
     Properties props = new Properties();
     props.setProperty("mail.transport.protocol", "smtp");    //使用smpt的邮件传输协议
     props.setProperty("mail.smtp.host", "smtp.qq.com");    //主机地址
@@ -53,24 +50,10 @@ public class SendMailUtil {
       message.setSubject("验证码", "utf-8");    //设置主题
       message.setSentDate(new Date());
 
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
-      String str = "<!DOCTYPE html><html><head><meta charset='UTF-8'></head><body>" +
-          "<p style='font-size: 20px;font-weight:bold;'>尊敬的："
-          + name
-          + "，您好！</p>"
-          + "<p style='text-indent:2em; font-size: 20px;'>" +
-          "欢迎注册智慧政务交互平台，您本次的验证码是 "
-          + "<span style='font-size:30px;font-weight:bold;color:red'>" + code
-          + "</span>，请尽快使用！</p>"
-          + "<p style='text-align:right; padding-right: 20px;'"
-          + "<a href='http://www.hyycinfo.com' style='font-size: 18px'>chrisu</a></p>"
-          + "<span style='font-size: 18px; float:right; margin-right: 60px;'>"
-          + sdf.format(new Date())
-          + "</span></body></html>";
 
       Multipart mul = new MimeMultipart();  //新建一个MimeMultipart对象来存放多个BodyPart对象
       BodyPart mdp = new MimeBodyPart();  //新建一个存放信件内容的BodyPart对象
-      mdp.setContent(str, "text/html;charset=utf-8");
+      mdp.setContent(content, "text/html;charset=utf-8");
       mul.addBodyPart(mdp);  //将含有信件内容的BodyPart加入到MimeMultipart对象中
       message.setContent(mul); //把mul作为消息内容
 

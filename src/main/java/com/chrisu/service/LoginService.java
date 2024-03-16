@@ -3,6 +3,9 @@ package com.chrisu.service;
 
 import com.chrisu.POJO.Login;
 import com.chrisu.POJO.User;
+import com.chrisu.controller.Result;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -26,4 +29,6 @@ public interface LoginService {
    * @return
    */
   User findById(User user);
+
+  Result login(HttpSession session,User user);
 }

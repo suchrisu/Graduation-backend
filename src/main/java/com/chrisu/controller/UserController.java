@@ -2,9 +2,12 @@ package com.chrisu.controller;
 
 import com.chrisu.POJO.User;
 import com.chrisu.service.UserService;
+import com.chrisu.utils.Md5Util;
+import java.nio.charset.StandardCharsets;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -105,6 +108,36 @@ public class UserController {
       return Result.error("请先登录!");
     }
     return userService.getUserById(user.getUserId());
+  }
+
+  /**
+   * 处理发送验证码请求
+   *
+   * @param request
+   * @param mail    发送的邮箱
+   * @return
+   */
+  @GetMapping("/sendValidCode")
+  public Result sendRegisterCode( HttpServletRequest request,@RequestParam("mail") String mail) {
+    Result result = userService.sendValidCode(mail);
+    if (result.getCode() == 1) {
+      HttpSession session = request.getSession();
+      session.setAttribute("validCode", result.getData());
+    }
+    return result;
+  }
+
+
+  @PostMapping("/updateUserPassword")
+  public Result updateUserPassword(HttpServletRequest request,@RequestBody User user){
+    String validCode = request.getParameter("code");
+    HttpSession session = request.getSession();
+    if(validCode.equals(session.getAttribute("validCode"))){
+      String userPassword = Md5Util.md5(user.getUserPassword());
+      user.setUserPassword(userPassword);
+      return userService.update(user);
+    }
+    return Result.error("验证码错误!");
   }
 
 
