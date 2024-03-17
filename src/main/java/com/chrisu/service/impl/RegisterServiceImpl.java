@@ -34,6 +34,7 @@ public class RegisterServiceImpl implements RegisterService {
     user.setUserRegisterTime(registerTime);
     String userPassword = Md5Util.md5(user.getUserPassword());
     user.setUserPassword(userPassword);
+    user.setuserHeader("defaultHeader.png");
     if (userMapper.save(user) > 0) {
       return Result.success(user);
     }

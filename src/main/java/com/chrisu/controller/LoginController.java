@@ -37,7 +37,7 @@ public class LoginController {
    * @return
    */
   @PostMapping("/login")
-  public Result login(HttpServletRequest request, HttpServletResponse response, @RequestBody User user, @RequestParam String code) {
+  public Result login(HttpServletRequest request, @RequestBody User user, @RequestParam String code) {
     HttpSession session = request.getSession();
     log.info((String) session.getAttribute("loginCode"));
     if (!code.equalsIgnoreCase((String) session.getAttribute("loginCode"))) {
@@ -69,7 +69,7 @@ public class LoginController {
   @GetMapping("/logOut")
   public Result logOut(HttpServletRequest request){
     HttpSession session = request.getSession();
-    session.removeAttribute("user");
+    CurrentUserUtil.removeCurrentUser(session);
     return Result.success(true);
   }
 }

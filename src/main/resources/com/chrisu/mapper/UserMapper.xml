@@ -10,7 +10,7 @@
     <result column="user_name" property="userName"/>
     <result column="user_password" property="userPassword"/>
     <result column="user_register_time" property="userRegisterTime"/>
-    <result column="user_head_picture_address" property="userHeadPictureAddress"/>
+    <result column="user_header" property="userHeader"/>
   </resultMap>
   <update id="update">
     update user
@@ -27,9 +27,9 @@
         user_password =
         #{userPassword},
       </if>
-      <if test="userHeadPictureAddress != null and userHeadPictureAddress != ''">
-        user_head_picture_address =
-        #{userHeadPictureAddress},
+      <if test="userHeader != null and userHeader != ''">
+        user_header =
+        #{userHeader},
       </if>
     </set>
     where user_id = #{userId}

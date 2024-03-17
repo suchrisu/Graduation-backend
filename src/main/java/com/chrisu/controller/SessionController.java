@@ -3,9 +3,7 @@ package com.chrisu.controller;
 import com.chrisu.POJO.Session;
 import com.chrisu.POJO.User;
 import com.chrisu.service.SessionService;
-import com.chrisu.utils.TimeStampUtil;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +43,7 @@ public class SessionController {
 
   @GetMapping("/getSessions")
   Result getSessions(HttpServletRequest request){
-    User currentUser = ControllerUtil.getCurrentUser(request.getSession());
+    User currentUser = CurrentUserUtil.getCurrentUser(request.getSession());
     return sessionService.getSessions(currentUser.getUserId());
   }
 }

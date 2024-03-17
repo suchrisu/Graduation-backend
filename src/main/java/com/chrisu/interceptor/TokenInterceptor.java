@@ -29,7 +29,7 @@ public class TokenInterceptor implements HandlerInterceptor {
     response.setCharacterEncoding("UTF-8");
     response.setContentType("application/json; charset=utf-8");
     try{
-      Result result = Result.error("请先登录!");
+      Result result = Result.error("请先登录1!");
       response.getWriter().append(JSON.toJSONString(result));
 //      System.out.println("认证失败，未通过拦截器");
 

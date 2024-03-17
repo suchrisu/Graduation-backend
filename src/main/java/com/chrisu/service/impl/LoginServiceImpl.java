@@ -4,6 +4,7 @@ package com.chrisu.service.impl;
 
 import com.chrisu.POJO.Login;
 import com.chrisu.POJO.User;
+import com.chrisu.controller.CurrentUserUtil;
 import com.chrisu.controller.Result;
 import com.chrisu.mapper.LoginMapper;
 import com.chrisu.mapper.UserMapper;
@@ -52,7 +53,7 @@ public class LoginServiceImpl implements LoginService {
       return Result.error("密码错误!");
     }
     String token = TokenUtil.sign(loginUser);
-    session.setAttribute("user", loginUser);
+    CurrentUserUtil.setCurrentUser(session,loginUser);
     Login login = new Login(TimeStampUtil.getTimeStamp(), user.getUserId());
     insertLogin(login);
     Result result = Result.success(loginUser);

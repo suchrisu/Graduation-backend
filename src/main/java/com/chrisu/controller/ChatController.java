@@ -25,7 +25,7 @@ public class ChatController {
   Result chatLLM(@RequestBody ChatMessage chatMessage, HttpServletRequest request) {
     String context =sessionFileContext
         + "/"
-        + ControllerUtil.getCurrentUser(request.getSession()).getUserId();
+        + CurrentUserUtil.getCurrentUser(request.getSession()).getUserId();
     String sessionFile = request.getParameter("sessionFile");
     return chatMessageService.sendChatMessage(chatMessage, context,sessionFile);
   }
@@ -34,7 +34,7 @@ public class ChatController {
   Result getChatMessageList(HttpServletRequest request) {
     String context =sessionFileContext
         + "/"
-        + ControllerUtil.getCurrentUser(request.getSession()).getUserId();
+        + CurrentUserUtil.getCurrentUser(request.getSession()).getUserId();
     String sessionFile = request.getParameter("sessionFile");
     return chatMessageService.getChatMessage(context,sessionFile);
   }

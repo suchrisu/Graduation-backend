@@ -9,8 +9,8 @@ import java.util.List;
 public interface UserMapper {
 
   @Insert("insert into user(user_id,role_power_id,user_name,user_register_time," +
-      "user_password,user_head_picture_address)values(#{userId},#{rolePowerId}," +
-      "#{userName},#{userRegisterTime},#{userPassword},#{userHeadPictureAddress})")
+      "user_password,user_header)values(#{userId},#{rolePowerId}," +
+      "#{userName},#{userRegisterTime},#{userPassword},#{userHeader})")
   int save(User user);
 
   @Delete("delete from user where user_id = #{userId}")

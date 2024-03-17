@@ -14,20 +14,20 @@ public class User implements Serializable {
   private String userName; // 用户名
   private String userRegisterTime; // 用户注册的时间
   private String userPassword; // 用户密码
-  private String userHeadPictureAddress; // 用户头像的图片地址
+  private String userHeader; // 用户头像的图片地址
 
   public User() {
   }
 
   public User(String userId, int rolePowerId, String userName,
       String userRegisterTime, String userPassword,
-      String userHeadPictureAddress) {
+      String userHeader) {
     this.userId = userId;
     this.rolePowerId = rolePowerId;
     this.userName = userName;
     this.userRegisterTime = userRegisterTime;
     this.userPassword = userPassword;
-    this.userHeadPictureAddress = userHeadPictureAddress;
+    this.userHeader = userHeader;
   }
 
   public String getUserId() {
@@ -70,12 +70,12 @@ public class User implements Serializable {
     this.userPassword = userPassword;
   }
 
-  public String getUserHeadPictureAddress() {
-    return userHeadPictureAddress;
+  public String getuserHeader() {
+    return userHeader;
   }
 
-  public void setUserHeadPictureAddress(String userHeadPictureAddress) {
-    this.userHeadPictureAddress = userHeadPictureAddress;
+  public void setuserHeader(String userHeader) {
+    this.userHeader = userHeader;
   }
 
   @Override
@@ -86,7 +86,7 @@ public class User implements Serializable {
         ", userName='" + userName + '\'' +
         ", userRegisterTime='" + userRegisterTime + '\'' +
         ", userPassword='" + userPassword + '\'' +
-        ", userHeadPictureAddress='" + userHeadPictureAddress + '\'' +
+        ", userHeader='" + userHeader + '\'' +
         '}';
   }
 }
