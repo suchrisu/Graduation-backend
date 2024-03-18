@@ -55,7 +55,13 @@ public class UserFileServiceImpl implements UserFileService {
    * @throws IOException
    */
   public void download(HttpServletResponse response, String fileName) throws IOException {
-    response.setContentType("image/*");
+    String fileType = fileName.substring(fileName.lastIndexOf(".")+1);
+    if("png".equals(fileType)){
+      response.setContentType("image/png");
+    }
+    else{
+      response.setContentType("image/jpeg");
+    }
     FileInputStream fileInputStream = new FileInputStream(fileName);
     ServletOutputStream responseOutputStream = response.getOutputStream();
     IOUtils.copy(fileInputStream, responseOutputStream);
@@ -75,7 +81,6 @@ public class UserFileServiceImpl implements UserFileService {
                 + "/"
                 + userHeader;
     try {
-      System.out.println(userHeaderFilePath);
       download(response, userHeaderFilePath);
     } catch (IOException e) {
       response.setContentType("application/json; charset=utf-8");

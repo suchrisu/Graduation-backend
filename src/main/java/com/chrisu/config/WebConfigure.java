@@ -33,6 +33,7 @@ public class WebConfigure extends WebMvcConfigurationSupport {
     //排除拦截，除了注册登录(此时还没token)，其他都拦截
     excludePath.add("/login/**");  //登录
     excludePath.add("/register/**");     //注册
+    excludePath.add("/userFile/**");
 
     registry.addInterceptor(tokenInterceptor)
         .addPathPatterns("/**")

@@ -12,6 +12,7 @@ public class sessionServiceImpl implements SessionService {
 
   @Autowired private SessionMapper sessionMapper;
 
+  // TODO: 2024/3/18  以nanoid作为sessionName
   @Override
   public Result addSession(Session session) {
     if (sessionMapper.save(session) > 0) {
