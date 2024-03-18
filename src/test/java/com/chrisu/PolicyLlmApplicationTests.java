@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONReader;
 import com.alibaba.fastjson.JSONWriter;
 import com.chrisu.POJO.ChatMessage;
+import com.chrisu.service.ChatMessageService;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,10 +15,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class PolicyLlmApplicationTests {
+  @Autowired
+  ChatMessageService chatMessageService;
 
   @Test
   void contextLoads() {
@@ -93,6 +97,12 @@ class PolicyLlmApplicationTests {
       i++;
     }
     jsonWriter.close();
+  }
+
+  @Test
+  void testSendToLLM(){
+    ChatMessage chatMessage2 = ChatMessage.userChatMessage("你好");
+    chatMessageService.sendToLLM(chatMessage2, new ArrayList<ChatMessage>());
   }
 
 }
