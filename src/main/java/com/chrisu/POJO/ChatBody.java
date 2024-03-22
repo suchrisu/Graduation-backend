@@ -28,8 +28,8 @@ public class ChatBody {
   }
 
   public static ChatBody getCommonChatBody(String query,List<ChatMessage> history){
-    boolean stream = false;
-    String modelName = "chatglm2-6b";
+    boolean stream = true;
+    String modelName = "";
     double temperature = 0.7;
     int maxTokens = 1024;
     return new ChatBody(query,history,stream,modelName,temperature,maxTokens,null);

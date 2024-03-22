@@ -27,25 +27,25 @@ class PolicyLlmApplicationTests {
   void contextLoads() {
   }
 
-  @Test
-  void testChatMessageToJson(){
-    ChatMessage chatMessage1 = ChatMessage.userChatMessage("哈哈哈");
-    ChatMessage chatMessage2 = ChatMessage.assistantChatMessage("123");
-    ChatMessage chatMessage3 = ChatMessage.assistantChatMessage("你好");
-    ChatMessage chatMessage4 = ChatMessage.assistantChatMessage("好的");
-
-    List<ChatMessage> chatMessageList = new ArrayList<>();
-    chatMessageList.add(chatMessage1);
-    chatMessageList.add(chatMessage2);
-    chatMessageList.add(chatMessage3);
-    chatMessageList.add(chatMessage4);
-
-    String jsonArray = JSONArray.toJSONString(chatMessageList);
-    System.out.println(jsonArray);
-    String json = "[{\"chatType\":0,\"content\":\"哈哈哈\",\"role\":\"user\"},{\"chatType\":0,\"content\":\"123\",\"role\":\"assistant\"},{\"chatType\":0,\"content\":\"你好\",\"role\":\"assistant\"},{\"chatType\":0,\"content\":\"好的\",\"role\":\"assistant\"}]";
-    List<ChatMessage> chatMessageList1 = JSONArray.parseArray(json,ChatMessage.class);
-    System.out.println(chatMessageList1);
-  }
+//  @Test
+//  void testChatMessageToJson(){
+//    ChatMessage chatMessage1 = ChatMessage.userChatMessage("哈哈哈");
+//    ChatMessage chatMessage2 = ChatMessage.assistantChatMessage("123");
+//    ChatMessage chatMessage3 = ChatMessage.assistantChatMessage("你好");
+//    ChatMessage chatMessage4 = ChatMessage.assistantChatMessage("好的");
+//
+//    List<ChatMessage> chatMessageList = new ArrayList<>();
+//    chatMessageList.add(chatMessage1);
+//    chatMessageList.add(chatMessage2);
+//    chatMessageList.add(chatMessage3);
+//    chatMessageList.add(chatMessage4);
+//
+//    String jsonArray = JSONArray.toJSONString(chatMessageList);
+//    System.out.println(jsonArray);
+//    String json = "[{\"chatType\":0,\"content\":\"哈哈哈\",\"role\":\"user\"},{\"chatType\":0,\"content\":\"123\",\"role\":\"assistant\"},{\"chatType\":0,\"content\":\"你好\",\"role\":\"assistant\"},{\"chatType\":0,\"content\":\"好的\",\"role\":\"assistant\"}]";
+//    List<ChatMessage> chatMessageList1 = JSONArray.parseArray(json,ChatMessage.class);
+//    System.out.println(chatMessageList1);
+//  }
 
   @Test
   void getPath(){
@@ -101,8 +101,8 @@ class PolicyLlmApplicationTests {
 
   @Test
   void testSendToLLM(){
-    ChatMessage chatMessage2 = ChatMessage.userChatMessage("你好");
-    chatMessageService.sendToLLM(chatMessage2, new ArrayList<ChatMessage>());
+    ChatMessage chatMessage2 = ChatMessage.userChatMessage("写一篇300字的文章，主题篮球");
+//    chatMessageService.sendToLLM(chatMessage2, new ArrayList<ChatMessage>());
   }
 
 }

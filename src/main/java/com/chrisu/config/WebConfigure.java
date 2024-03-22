@@ -34,6 +34,7 @@ public class WebConfigure extends WebMvcConfigurationSupport {
     excludePath.add("/login/**");  //登录
     excludePath.add("/register/**");     //注册
     excludePath.add("/userFile/**");
+    excludePath.add("/sse/**");
 
     registry.addInterceptor(tokenInterceptor)
         .addPathPatterns("/**")
