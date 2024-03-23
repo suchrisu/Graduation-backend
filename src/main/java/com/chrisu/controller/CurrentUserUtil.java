@@ -5,7 +5,11 @@ import javax.servlet.http.HttpSession;
 
 public class CurrentUserUtil {
   public static User getCurrentUser(HttpSession httpSession){
-    return (User) httpSession.getAttribute("currentUser");
+    User user = (User) httpSession.getAttribute("currentUser");
+    if(user==null){
+      throw new RuntimeException("登录已过期！");
+    }
+    return user;
   }
 
   public static void setCurrentUser(HttpSession httpSession,User user){

@@ -25,6 +25,11 @@ public class ProjectAdvice {
     exception.printStackTrace();
     System.out.println("-----------------------------------------------------------------------");
     System.out.println("-----------------------------------------------------------------------");
+
+    if(exception.getMessage()!=null){
+      System.out.println(exception.getMessage());
+      return Result.error(exception.getMessage());
+    }
     return Result.error("系统繁忙,请稍后重试!");
   }
 

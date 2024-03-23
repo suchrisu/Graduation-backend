@@ -120,13 +120,14 @@ public class ChatMessageServiceImpl implements ChatMessageService {
     JSONObject requestBody = (JSONObject) JSON.toJSON(chatBody);
     requestBody.remove("modelName");
     StringBuffer llmMessage = new StringBuffer();
-    for (int i = 0; i < 100; i++) {
+//    测试
+    for (int i = 0; i < 30; i++) {
       try {
         Thread.sleep(100);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
-      Result result = Result.success("这是消息"+i+"\n");
+      Result result = Result.success("这是一条消息。。。。。。。。。。。。。。。。。。。。。。。。。。。。"+i+"\n");
       try{
         sseEmitterService.sendMessageToOneClient(clientId, result);
       }catch(RuntimeException exception){
@@ -151,7 +152,13 @@ public class ChatMessageServiceImpl implements ChatMessageService {
 //        llmMessage.append(text);
 //        System.out.println(text);
 //        Result result = Result.success(text);
+//        try{
 //        sseEmitterService.sendMessageToOneClient(clientId, result);
+//        } catch (RuntimeException exception) {
+//          if ("sseEmitter为空".equals(exception.getMessage())) {
+//            return llmMessage.toString();
+//          }
+//      }
 //        bufferedReader.readLine();
 //      }
 //      //         当服务器端主动关闭的时候，客户端无法获取到信号。现在还不清楚原因。所以无法执行的此处。
@@ -161,9 +168,10 @@ public class ChatMessageServiceImpl implements ChatMessageService {
 //      return llmMessage.toString();
 //
 //    } catch (Exception e) {
-//      System.out.println(e);
+//      sseEmitterService.closeConnect(clientId);
+//      throw new RuntimeException("大模型掉线了。。。");
 //    }
-//    return "大模型掉线了。。。";
+
   }
 
   @Override
